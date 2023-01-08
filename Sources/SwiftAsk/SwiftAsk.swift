@@ -39,10 +39,7 @@ public func askYesNo(_ question: String, color: Color = .default) -> Bool {
     
     while true {
         
-        say(yes, newLine: false)
-        say(" or ", newLine: false)
-        say(no, newLine: false)
-        say(": ", newLine: false)
+        say(yes + "/" + no + ": ", newLine: false)
         
         let answer: String = readLine()?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             .lowercased() ?? ""
