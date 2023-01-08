@@ -24,25 +24,25 @@ public func say(_ message: String, newLine: Bool = true) -> Void {
 }
 
 public let noOptions = Set(["no", "n"])
-
 public let yesOptions = Set(["yes", "y"])
 
-public func askYesNo(_ question: String, color: Color?) -> Bool {
+fileprivate  let no: String = "N".red + "o"
+fileprivate let yes: String = "Y".green + "es"
+
+public func askYesNo(_ question: String, color: Color = .default) -> Bool {
     
     if question.isEmpty {
         return false
     }
     
-    if let color = color {
-        say(question, color: color)
-    }
+    say(question, color: color)
     
     while true {
         
-        say("[Y]".green + "es", newLine: false)
+        say(yes, newLine: false)
         say(" or ", newLine: false)
-        say("[N]".red + "o", newLine: false)
-        say(" : ", newLine: false)
+        say(no, newLine: false)
+        say(": ", newLine: false)
         
         let answer: String = readLine()?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             .lowercased() ?? ""
