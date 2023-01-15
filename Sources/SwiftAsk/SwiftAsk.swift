@@ -49,11 +49,11 @@ public struct Question {
 private func lineForType(_ type: YesNoType) -> String {
     switch type {
         case .first:
-            return "Y".green + "es " + "/" + "N".red + "o"
+            return "Y".green + "es " + "/" + "N".red + "o: "
         case .second:
-            return "Yes".green + " or " + "No".red
+            return "Yes".green + " or " + "No: ".red
         case .third:
-            return"[Y]".bold + "es" + " [N]".bold + "o"
+            return"[Y]".bold + "es" + " [N]".bold + "o: "
     }
 }
 
