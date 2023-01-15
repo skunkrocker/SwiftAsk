@@ -85,6 +85,14 @@ public func ask( _ question: Question, _ type: YesNoType = .yes_dash_no) -> Bool
     }
 }
 
+public func ask(_ question: Question, _ type: YesNoType, onPositive: () -> Void ) -> Void {
+    ask(question, type) { answer in
+        if answer {
+            onPositive()
+        }
+    }
+}
+
 public func ask(_ question: Question, _ type: YesNoType = .yes_dash_no, answer: (Bool) -> Void) -> Void {
     let response = ask(question, type)
     answer(response)
