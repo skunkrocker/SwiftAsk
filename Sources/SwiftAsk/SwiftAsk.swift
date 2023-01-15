@@ -23,16 +23,16 @@ public func say(_ message: String, newLine: Bool = true) -> Void {
     }
 }
 
-public let noOptions = Set(["no", "n"])
-public let yesOptions = Set(["yes", "y"])
+fileprivate let noOptions = Set(["no", "n"])
+fileprivate let yesOptions = Set(["yes", "y"])
 
 fileprivate  let no: String = "N".red + "o"
 fileprivate let yes: String = "Y".green + "es"
 
 public enum YesNoType {
-    case first
-    case second
-    case third
+    case yes_or_no
+    case yes_dash_no
+    case yes_no_brackets
 }
 
 public struct Question {
@@ -48,16 +48,16 @@ public struct Question {
 
 private func lineForType(_ type: YesNoType) -> String {
     switch type {
-        case .first:
-            return "Y".green + "es " + "/" + "N".red + "o: "
-        case .second:
-            return "Yes".green + " or " + "No: ".red
-        case .third:
-            return"[Y]".bold + "es" + " [N]".bold + "o: "
+        case .yes_dash_no:
+            return "Yes".green.bold + "/" + "No".red.bold + ": "
+        case .yes_or_no:
+            return "Yes".green.bold + " or " + "No".red.bold + ": "
+        case .yes_no_brackets:
+            return"[Y]es".green.bold + " [N]o".red.bold + ": "
     }
 }
 
-public func ask( _ question: Question, _ type: YesNoType = .first) -> Bool {
+public func ask( _ question: Question, _ type: YesNoType = .yes_dash_no) -> Bool {
     
     if question.question.isEmpty {
         return false
@@ -85,7 +85,7 @@ public func ask( _ question: Question, _ type: YesNoType = .first) -> Bool {
     }
 }
 
-public func ask(_ question: Question, _ type: YesNoType = .first, answer: (Bool) -> Void) -> Void {
+public func ask(_ question: Question, _ type: YesNoType = .yes_dash_no, answer: (Bool) -> Void) -> Void {
     let response = ask(question, type)
     answer(response)
 }
