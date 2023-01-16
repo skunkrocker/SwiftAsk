@@ -1,7 +1,17 @@
 # SwiftAsk
 
 Simple Swift library for asking the user the hard questions on the Command line.
+## Instalation
+```swift
+import PackageDescription
 
+let package = Package(
+        name: "Your Package",
+        dependencies: [
+            .package(url: "https://github.com/skunkrocker/SwiftAsk.git", from: "1.0.2")
+        ]
+)
+```
 ## Usage
 
 Ask the question and execute the block only when positive answer is given.
