@@ -30,3 +30,9 @@ ask(question, .yes_no_brackets) { answer in
     say("You answered with: \(answer)")
 }
 ```
+Choose your own code style how to use it.
+```swift
+let question = Question(question: "Wonna play game", color: .cyan)
+let answer = ask(question, .yes_no_brackets)
+say("You answered with: \(answer)")
+```
